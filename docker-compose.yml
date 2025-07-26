@@ -1,0 +1,42 @@
+# recipe_back/docker-compose.yml
+version: "3.8"
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: recipe_php
+    volumes:
+      - ./:/var/www/html:cached
+    ports:
+      - "9000:9000"
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:alpine
+    container_name: recipe_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html:ro
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/:ro
+    depends_on:
+      - php
+
+  db:
+    image: mysql:8.0
+    container_name: recipe_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: recipes_db
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: secret
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  db_data:

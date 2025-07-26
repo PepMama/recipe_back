@@ -1,0 +1,32 @@
+# Composer
+/vendor/
+/composer.phar
+
+# Symfony / PHP
+/.env.local
+/.env.test
+/.phpunit.result.cache
+/.symfony/cache/
+/var/
+/public/bundles/
+/public/build/
+
+# IDEs & éditeurs
+/.idea/
+/.vscode/
+/nbproject/
+/*.sublime-project
+/*.sublime-workspace
+
+# Logs & sessions
+/logs/
+/sessions/
+
+# Docker (si tu as des certifs ou overrides locaux)
+/docker/*.pem
+/docker/*.key
+docker-compose.override.yml
+
+# Autres
+/node_modules/
+/*.log
