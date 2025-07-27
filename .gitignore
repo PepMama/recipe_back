@@ -10,6 +10,9 @@
 /var/
 /public/bundles/
 /public/build/
+/.env
+/.env.dev
+/.env.test
 
 # IDEs & éditeurs
 /.idea/
